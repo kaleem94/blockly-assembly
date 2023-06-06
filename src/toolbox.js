@@ -50,7 +50,7 @@ export const toolbox = {
   'contents': [
     {
       'kind': 'block',
-      'type': 'dotglobal',
+      'type': 'dotglobal1',
     },
     // {
     //   'kind': 'block',
@@ -80,10 +80,10 @@ export const toolbox = {
       'kind': 'block',
       'type': 'list_new',
     },
-    {
-      'kind': 'block',
-      'type': 'dotglobal1',
-    },
+    // {
+    //   'kind': 'block',
+    //   'type': 'dotglobal1',
+    // },
   ]
 },
 ]
