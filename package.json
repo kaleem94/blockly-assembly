@@ -24,6 +24,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@blockly/theme-dark": "^4.0.10",
     "androidjs": "^2.0.6",
     "blockly": "^9.2.0"
   }
