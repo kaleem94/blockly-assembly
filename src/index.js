@@ -10,6 +10,7 @@ import {jsonGenerator} from './generators/arm_assembly_generator';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
 import './index.css';
+import DarkTheme from '@blockly/theme-dark';
 
 // Register the blocks with Blockly
 Blockly.common.defineBlocks(blocks);
@@ -18,7 +19,9 @@ Blockly.common.defineBlocks(blocks);
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const blocklyDiv = document.getElementById('blocklyDiv');
-const ws = Blockly.inject(blocklyDiv, {toolbox});
+const ws = Blockly.inject(blocklyDiv, 
+    {toolbox,
+    theme: DarkTheme});
 
 // This function resets the code div and shows the
 // generated code from the workspace.
@@ -37,6 +40,7 @@ ws.addChangeListener((e) => {
   // No need to save after one of these.
   if (e.isUiEvent) return;
   save(ws);
+  jsonGenerator.clearBeforeConversion();
   // console.log(ws);
 });
 
