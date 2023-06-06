@@ -209,6 +209,44 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
   "colour": 230,
   "tooltip": "",
   "helpUrl": ""
+},
+
+{
+  "type": "dotglobal1",
+  "message0": ".global %1",
+  // "message0": ".global %1 %2",
+  "args0": [
+    {
+      "type": "input_dummy",
+      "name": "NAME"
+    }
+  ],
+  "extensions": ["dynamic_menu_extension"],
+
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "global declaration",
+  "helpUrl": ""
 }
 
 ]);
+
+
+// Blockly.Extensions.register('dynamic_menu_extension',
+//   function(){
+//     console.log("Testing json dd append");
+//     this.getInput('NAME')
+//     .appendField(new Blockly.FieldDropdown(
+//       function() {
+//         var options = [];
+//         var now = Date.now();
+//         for(var i = 0; i < 7; i++) {
+//           var dateString = String(new Date(now)).substring(0, 3);
+//           options.push([dateString, dateString.toUpperCase()]);
+//           now += 24 * 60 * 60 * 1000;
+//         }
+//         return options;
+//       }), 'DAY');
+//   }
+// );

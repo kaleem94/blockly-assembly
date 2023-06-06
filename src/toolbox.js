@@ -80,6 +80,10 @@ export const toolbox = {
       'kind': 'block',
       'type': 'list_new',
     },
+    {
+      'kind': 'block',
+      'type': 'dotglobal1',
+    },
   ]
 },
 ]
