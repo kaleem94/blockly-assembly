@@ -32,7 +32,7 @@ Blockly.Extensions.register('dynamic_menu_extension',
         //   now += 24 * 60 * 60 * 1000;
         // }
         return options;
-      }));
+      }), 'gotoLabel');
       // }), 'DAY');
   }
 );
@@ -140,9 +140,9 @@ jsonGenerator['dotdata'] = function(block) {
 
 jsonGenerator['dotglobal1'] = function(block) {
   // var dropdown_ddl = block.getFieldValue('ddl');
-  // var value_name = block.getFieldValue('ddl');
+  var value_name = block.getFieldValue('gotoLabel');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  var code = '.global '+ value_name + '\n';
   return code;
 };
 
