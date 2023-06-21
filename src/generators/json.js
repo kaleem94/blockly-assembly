@@ -5,7 +5,7 @@ export const programData = [];
 
 // jsonGenerator.programLabels = [];
 
-export const jsonGenerator = new Blockly.Generator('JSON');
+export const jsonGenerator = new Blockly.Generator('assembly_arm');
 
 jsonGenerator.PRECEDENCE = 0;
 jsonGenerator.INDENT= "    ";
@@ -17,12 +17,13 @@ Blockly.Extensions.register('dynamic_menu_extension',
     .appendField(new Blockly.FieldDropdown(
       function() {
         var options = [];
-        var now = Date.now();
         options.push(["_start", "_start"]);
         if (programLabels)
         {
           for(var i = 0; i < programLabels.length; i++) {
-            options.push([programLabels[i], programLabels[i]]);
+            if (programLabels[i] != "_start"){
+              options.push([programLabels[i], programLabels[i]]);
+            }
           }
         }
         
@@ -82,6 +83,21 @@ jsonGenerator['dd'] = function(block) {
   return code;
 };
 
+jsonGenerator['customizable_block'] = function(block) {
+  var dropdown_name = block.getFieldValue('NAME');
+  var text_data = block.getFieldValue('data');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '';
+  if (dropdown_name == "comment"){
+    code += "; " + text_data;
+  }
+  else if (dropdown_name == "code"){
+    code += text_data;
+  }
+  code += "\n";
+  return code;
+};
+
 // jsonGenerator['label'] = function(block) {
 //   var text_gotolabel = block.getFieldValue('gotoLabel');
 //   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
@@ -127,14 +143,14 @@ jsonGenerator['label'] = function(block) {
   return code;
 };
 
-jsonGenerator['dotdata'] = function(block) {
-  const statementMembers =
-      jsonGenerator.statementToCode(block, 'MEMBERS');
-  // var dsd = jsonGenerator.
-  // console.log(dsd);
-  const code = '.data\n' + statementMembers + '\n';
-  return code;
-};
+// jsonGenerator['dotdata'] = function(block) {
+//   const statementMembers =
+//       jsonGenerator.statementToCode(block, 'MEMBERS');
+//   // var dsd = jsonGenerator.
+//   // console.log(dsd);
+//   const code = '.data\n' + statementMembers + '\n';
+//   return code;
+// };
 
 
 
@@ -142,7 +158,15 @@ jsonGenerator['dotglobal1'] = function(block) {
   // var dropdown_ddl = block.getFieldValue('ddl');
   // var value_name = block.getFieldValue('ddl');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  var value_name = jsonGenerator.valueToCode(block, 'NAME', jsonGenerator.PRECEDENCE);
+  // var value_name = block.getFieldValue('NAME');
+  console.log("dot global value name");
+  console.log(value_name);
+  console.log(block);
+  console.log(jsonGenerator.PRECEDENCE);
+  value_name = value_name.replace(/"/g, '');
+  var code = ".global " + value_name + "\n";
+  // var code = "...\n";
   return code;
 };
 
