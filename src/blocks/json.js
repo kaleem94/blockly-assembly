@@ -140,24 +140,24 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
   "tooltip": "",
   "helpUrl": ""
 },
-{
-  "type": "dotdata",
-  "message0": ".data %1 %2",
-  "args0": [
-    {
-      "type": "input_dummy"
-    },
-    {
-      "type": "input_statement",
-      "name": "MEMBERS"
-    }
-  ],
-  "previousStatement": null,
-  "nextStatement": null,
-  "colour": 90,
-  "tooltip": "Label",
-  "helpUrl": ""
-},
+// {
+//   "type": "dotdata",
+//   "message0": ".data %1 %2",
+//   "args0": [
+//     {
+//       "type": "input_dummy"
+//     },
+//     {
+//       "type": "input_statement",
+//       "name": "MEMBERS"
+//     }
+//   ],
+//   "previousStatement": null,
+//   "nextStatement": null,
+//   "colour": 90,
+//   "tooltip": "Label",
+//   "helpUrl": ""
+// },
 
 {
   "type": "dot_word",
@@ -227,6 +227,37 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
   "nextStatement": null,
   "colour": 230,
   "tooltip": "global declaration",
+  "helpUrl": ""
+},
+
+{
+  "type": "customizable_block",
+  "message0": "%1 %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "NAME",
+      "options": [
+        [
+          "Comment",
+          "comment"
+        ],
+        [
+          "Code",
+          "code"
+        ]
+      ]
+    },
+    {
+      "type": "field_input",
+      "name": "data",
+      "text": ""
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 285,
+  "tooltip": "",
   "helpUrl": ""
 }
 
